@@ -46,5 +46,25 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 ## take a look at the version of docker (installing succeed)
 docker -v
 
+```
+Extra
+```
+## make docker service run automaticly when sys start.
+systemctl is-enabled docker
 
+## setting sources for docker images(the official provided images)
+## writing these to /etc/docker/daemon.js
+##{
+##  "registry-mirrors": [
+##    "https://docker.m.daocloud.io",
+##    "http://hub-mirror.c.163.com",
+##    "https://docker.nju.edu.cn"
+##  ]
+##}
+
+## restart docker
+sudo systemctl restart docker
+
+## run a final test
+sudo docker container run hello-world
 ```
