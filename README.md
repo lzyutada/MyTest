@@ -67,4 +67,8 @@ sudo systemctl restart docker
 
 ## run a final test
 sudo docker container run hello-world
+
+## adding user(current loggin) to group of docker(commands of docker executable only for root and docker(user) by default)
+## authorize will be effective in a new shell.
+sudo usermod -aG docker $USER
 ```
