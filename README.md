@@ -79,16 +79,9 @@ mkdir -p ~/hostworkspace
 ## 2. enter docker workspace, and write Dockerfile
 nano Dockerfile
 ## 2.1. the content of Dockerfile
-# 1. 使用 Ubuntu 24.04 作为基础镜像
 FROM ubuntu:24.04
-
-# 2. 设置环境变量，防止安装过程中的交互提示
 ENV DEBIAN_FRONTEND=noninteractive
-
-# 3. 设置默认工作目录为 /root (即容器内的 ~/)
 WORKDIR /root
-
-# 4. 安装基础工具及依赖
 RUN apt-get update && apt-get install -y \
     curl \
     git \
@@ -96,15 +89,9 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
-
-# 5. 安装 Node.js 24
-RUN curl -fsSL https://deb.nodesource.com | bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
     && apt-get install -y nodejs
-
-# 6. 声明需要暴露的端口（仅作说明，实际绑定在 run 命令中完成）
-EXPOSE 8080 5000 18443
-
-# 7. 默认启动命令
+EXPOSE 18789 80 5000 443
 CMD ["/bin/bash"]
 
 ## 2.3. build by Dockerfile (cd to the path where Dockerfile located)
