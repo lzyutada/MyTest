@@ -128,5 +128,33 @@ chmod +x setup_node.sh
 ## installing node.js
 apt install nodejs -y
 
+```
 
+- installing flask & gunicorn
+```
+## flask and gunicorn are installed in a virtual evrionment better
+## installing python3-venv
+apt install python3-venv
+## create a new virtual evrionment and activate it
+python3 -m venv {{@venvname}}
+source {{@venvname}}/bin/activate
+
+pip install flask gunicorn
+```
+ - running a test
+```
+# create a file named app.py, and this is the content of app.py
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "Hello from Docker + Gunicorn!"
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
+```
+```
+## start server:
+gunicorn -w 4 -b 0.0.0.0:5000 --reload app:app
 ```
