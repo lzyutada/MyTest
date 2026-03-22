@@ -158,3 +158,27 @@ if __name__ == "__main__":
 ## start server:
 gunicorn -w 4 -b 0.0.0.0:5000 --reload app:app
 ```
+
+- put the pubkey(for ssh turnnal) on server
+```
+## append the content of key.pub to the file (~/.ssh/authorized_keys) with a new line.
+## set power
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
+
+# Windows
+### build a SSH turnnal between local PC(windows) and server(ubuntu)
+```
+## create a pub/pri key in powershell
+ssh-keygen -t ed25519 -C
+```
+### testing tunnal with server
+```
+## when pub key is placed in server, try it on client pc
+ssh admin@serverip
+```
+###
+```
+ssh -N -L localport1:127.0.0.1:serverport1 -L localport2:127.0.0.1:serverport2 admin@serverip
+```
