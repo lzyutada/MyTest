@@ -113,4 +113,20 @@ docker exec -it name_container /bing/bash
 ##5. stop/start container
 docker stop name_container
 docker start name_container
+```
+- installing nodejs24.x
+```
+#downloading installing script
+curl -fsSL https://deb.nodesource.com/setup_24.x -o setup_node.sh
 
+## gain power
+chmod +x setup_node.sh
+
+## run script
+./setup_node.sh
+
+## installing node.js
+apt install nodejs -y
+
+
+```
