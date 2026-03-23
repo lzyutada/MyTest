@@ -171,7 +171,7 @@ chmod 600 ~/.ssh/authorized_keys
 ### build a SSH turnnal between local PC(windows) and server(ubuntu)
 ```
 ## create a pub/pri key in powershell
-ssh-keygen -t ed25519 -C
+ssh-keygen -t ed25519 -C "youremal@host.com"
 ```
 ### testing tunnal with server
 ```
